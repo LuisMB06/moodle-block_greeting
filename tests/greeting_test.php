@@ -21,8 +21,11 @@ use advanced_testcase;
 /**
  * Unit tests for the greeting block.
  *
+ * @package    block_greeting
  * @covers \block_greeting
  * @covers \block_greeting\local\greeting_text
+ * @copyright 2026 Luis Miguel Santos Brito
+ * @license https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class greeting_test extends advanced_testcase {
     /**
@@ -32,7 +35,9 @@ final class greeting_test extends advanced_testcase {
         $this->resetAfterTest();
 
         $message = get_string('greeting', 'block_greeting');
-        $rendered = $this->page->get_renderer('core')->render_from_template(
+        global $PAGE;
+
+        $rendered = $PAGE->get_renderer('core')->render_from_template(
             'block_greeting/content',
             ['greeting' => $message]
         );
